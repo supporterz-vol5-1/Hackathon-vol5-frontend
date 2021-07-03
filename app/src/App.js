@@ -1,11 +1,13 @@
 import React from "react";
 import Chart from "./Chart";
-import styles from "./App.css";
+import "./App.css";
 
 const App = () => {
   return (
-    <div class={styles.chart}>
-      <Chart />
+    <div className="out">
+      <div className="chart">
+        <Chart />
+      </div>
     </div>
   );
 };

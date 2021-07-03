@@ -1,7 +1,7 @@
 // データを持ってくるための関数を書いておきたい
 const axios = require("axios");
 
-class get_data {
+export class get_data {
   base_url = "https://agile-tundra-65071.herokuapp.com/";
   //token = "b99bf467f68093508fc15a07da85b634";
   user = "mori";

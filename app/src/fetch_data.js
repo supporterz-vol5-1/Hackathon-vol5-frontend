@@ -4,8 +4,7 @@ const axios = require("axios");
 export class get_data {
   base_url = "https://agile-tundra-65071.herokuapp.com/";
   //token = "b99bf467f68093508fc15a07da85b634";
-  user = "mori";
-
+  user = "hackathon-vol5-1";
   constructor(username) {
     this.user = username;
   }
@@ -27,17 +26,19 @@ export class get_data {
 
   async preprocess_data() {
     var logs = await this.get_data();
-    //console.log(logs[6]);
     var log_list = [];
     for (const index in logs) {
-      // console.log(logs[index]);
+      //console.log(logs[index]);
       var tmp = {
         id: this.user,
         work: logs[index],
       };
       log_list.push(tmp);
     }
-    //console.log(log_list);
+    console.log(log_list);
     return log_list;
   }
 }
+//sample
+//a = new get_data("hackathon-vol5-1");
+//a.preprocess_data();

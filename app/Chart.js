@@ -13,7 +13,7 @@ const dataArrayObj = [
     {
         id: 'userid',  
         work: {
-            python: 20000, 
+            python: 0, 
             typescript: 8000, 
         }, 
     }, 
@@ -71,20 +71,25 @@ class Chart extends Component {
         //ファイルを開いていた時間を一週間単位で配列timesに取得して折れ線グラフのコンポーネントに渡す　これを全言語に対してやればよさそう
         let times = [];
         let time;
+        let dataset;
+        let datasets = [];
 
-        for(let i = 0; i < 7; i++){
-            time = jsonData[i].work[langs[0]];
-            times = times.concat(time);
+        for(let j = 0; j < langs.length; j++){
+            for(let i = 0; i < jsonData.length; i++){
+                time = jsonData[i].work[langs[0]];
+                times = times.concat(time);
+            }
+            dataset = {
+                data: times, 
+                label: langs[i], 
+            }
+
+            datasets = datasets.concat(dateset);
         }
 
       const data = {
         labels: ['April', 'May', 'June', 'July', 'August', 'September'],
-        datasets: [
-          {
-            data: times,
-            // 省略
-          },
-        ],
+        datasets: datasets, 
       };
       const options = {
         // 省略

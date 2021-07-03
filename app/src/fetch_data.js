@@ -6,6 +6,10 @@ export class get_data {
   //token = "b99bf467f68093508fc15a07da85b634";
   user = "mori";
 
+  constructor(username) {
+    this.user = username;
+  }
+
   async get_data() {
     var url = this.base_url + "api/" + this.user;
     var data;

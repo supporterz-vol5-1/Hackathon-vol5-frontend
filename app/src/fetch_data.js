@@ -41,6 +41,3 @@ export class get_data {
     return log_list;
   }
 }
-
-//a = new get_data();
-//a.preprocess_data();

@@ -67,21 +67,28 @@ class Chart extends Component {
         }
 
         langs = [...new Set(langs)];
+        console.log(langs);
+        const str = langs[0];
+        console.log(jsonData[0].work[str]);
 
         //ファイルを開いていた時間を一週間単位で配列timesに取得して折れ線グラフのコンポーネントに渡す　これを全言語に対してやればよさそう
         let times = [];
         let time;
         let dataset;
         let datasets = [];
+        let language;
 
         for(let j = 0; j < langs.length; j++){
+            language = langs[j];
+            times = [];
             for(let i = 0; i < jsonData.length; i++){
-                time = jsonData[i].work[langs[j]];
+                time = jsonData[i].work[language] ? jsonData[i].work[language] : 0;
                 times = times.concat(time);
+                console.log(time);
             }
             dataset = {
                 data: times, 
-                label: langs[j], 
+                label: language, 
             }
 
             datasets = datasets.concat(dataset);

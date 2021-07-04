@@ -1,4 +1,6 @@
 // データを持ってくるための関数を書いておきたい
+import "./setting";
+import React from "react";
 const axios = require("axios");
 
 export class get_data {

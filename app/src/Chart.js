@@ -58,8 +58,13 @@ const dataArrayObj = [
 const dataArrayStr = JSON.stringify(dataArrayObj);
 
 //JSON文字列を受けとって変換するという体でもう一度オブジェクトに変換
-const jsonData = JSON.parse(dataArrayStr);
-//const jsonData = get_data.preprocess_data();
+//const jsonData = JSON.parse(dataArrayStr);
+
+//let receivedData = new get_data("hackathon-vol5-1");
+//let jsonData = receivedData.preprocess_data();
+
+const jsonData = new get_data("hackathon-vol5-1").preprocess_data();
+console.log("jsonData");
 console.log(jsonData);
 
 class Chart extends Component {

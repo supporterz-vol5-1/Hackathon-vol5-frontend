@@ -1,13 +1,15 @@
-import React from "react"
-import {Line} from 'react-chartjs-2';
-import Chart from "./Chart"
+import React from "react";
+import Chart from "./Chart";
+import "./App.css";
 
 const App = () => {
-    return (
-        <div>
-            <Chart />
-        </div>
-    )
-}
+  return (
+    <div className="out">
+      <div className="chart">
+        <Chart />
+      </div>
+    </div>
+  );
+};
 
-export default App
+export default App;

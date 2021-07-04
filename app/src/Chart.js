@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Line } from "react-chartjs-2";
+import moment from "moment";
+import { get_data } from "./fetch_data";
 
 //バックから投げられたデータ　とりあえずここに置いておく
 const dataArrayObj = [
@@ -57,6 +59,13 @@ const dataArrayStr = JSON.stringify(dataArrayObj);
 //JSON文字列を受けとって変換するという体でもう一度オブジェクトに変換
 const jsonData = JSON.parse(dataArrayStr);
 
+//let receivedData = new get_data("hackathon-vol5-1");
+//let jsonData = receivedData.preprocess_data();
+
+//const jsonData = new get_data("hackathon-vol5-1").preprocess_data();
+console.log("jsonData");
+console.log(jsonData);
+
 class Chart extends Component {
   render() {
     //使われている言語を配列の形で取得する
@@ -94,9 +103,20 @@ class Chart extends Component {
       datasets = datasets.concat(dataset);
     }
 
+    //データを受け取った時の日時を取得
+    let m = moment().add("days", -7);
+    console.log(m.format("MM/DD"));
+
+    let days = [];
+
+    for (let i = 0; i < jsonData.length; i++) {
+      days = days.concat(m.add("days", 1).format("MM/DD"));
+    }
+
     const data = {
-      labels: ["April", "May", "June", "July", "August", "September"],
+      labels: days,
       datasets: datasets,
+      fill: false,
     };
     const options = {
       // 省略

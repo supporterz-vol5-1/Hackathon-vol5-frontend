@@ -1,46 +1,51 @@
-import React from "react";
+import React, { setState } from "react";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
-import { NavDropdown, Nav, Form, FormControl } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 
+const options = { register: 1, "change account": 2 };
 class Navibar extends React.Component {
-  render() {
-    return <RenderBarElement />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+      option: 1,
+    };
   }
-}
+  handleinput = (e) => {
+    this.setState({ username: e.target.value });
+  };
 
-function RenderBarElement() {
-  return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand>コーディング時間</Navbar.Brand>
-      <Button variant="secondary">graph</Button>
-      <Form inline>
-        <FormControl
-          type="text"
-          placeholder="account name"
-          className="mr-sm-2"
-        />
-      </Form>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <DropdownMenu />
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
-}
+  handletoggleinput = (e) => {
+    console.log(options[e.target.value]);
+    this.setState({ option: options[e.target.value] });
+  };
 
-function DropdownMenu() {
-  return (
-    <NavDropdown title="account menu" id="cnav-dropdown">
-      <DropdownElemnt name="register" />
-      <DropdownElemnt name="change account" />
-    </NavDropdown>
-  );
-}
-
-function DropdownElemnt(props) {
-  return <NavDropdown.Item>{props.name}</NavDropdown.Item>;
+  push_data = () => {
+    console.log(this.state);
+  };
+  render() {
+    return (
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand>コーディング時間</Navbar.Brand>
+        <Form inline>
+          <FormControl
+            type="text"
+            placeholder="account name"
+            className="mr-sm-2"
+            onChange={this.handleinput}
+          />
+          <Form.Control as="select" size="sm" onChange={this.handletoggleinput}>
+            <option>register</option>
+            <option>change account</option>
+          </Form.Control>
+          <Button variant="secondary" type="button" onClick={this.push_data}>
+            submit
+          </Button>
+        </Form>
+      </Navbar>
+    );
+  }
 }
 
 export default Navibar;

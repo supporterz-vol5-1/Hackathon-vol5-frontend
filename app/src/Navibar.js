@@ -1,46 +1,41 @@
-import React from "react";
+import React, { setState } from "react";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
-import { NavDropdown, Nav, Form, FormControl } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 
 class Navibar extends React.Component {
-  render() {
-    return <RenderBarElement />;
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: "",
+    };
   }
-}
-
-function RenderBarElement() {
-  return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand>コーディング時間</Navbar.Brand>
-      <Button variant="secondary">graph</Button>
-      <Form inline>
-        <FormControl
-          type="text"
-          placeholder="account name"
-          className="mr-sm-2"
-        />
-      </Form>
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <DropdownMenu />
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
-  );
-}
-
-function DropdownMenu() {
-  return (
-    <NavDropdown title="account menu" id="cnav-dropdown">
-      <DropdownElemnt name="register" />
-      <DropdownElemnt name="change account" />
-    </NavDropdown>
-  );
-}
-
-function DropdownElemnt(props) {
-  return <NavDropdown.Item>{props.name}</NavDropdown.Item>;
+  handleinput = (e) => {
+    this.setState({ username: e.target.value });
+  };
+  render() {
+    return (
+      <Navbar bg="light" expand="lg">
+        <Navbar.Brand>コーディング時間</Navbar.Brand>
+        <Button variant="secondary">graph</Button>
+        <Form inline>
+          <FormControl
+            type="text"
+            placeholder="account name"
+            className="mr-sm-2"
+            onChange={this.handleinput}
+          />
+          <Form.Control as="select" size="sm">
+            <option>register</option>
+            <option>change account</option>
+          </Form.Control>
+          <Button variant="secondary" type="submit">
+            submit
+          </Button>
+        </Form>
+      </Navbar>
+    );
+  }
 }
 
 export default Navibar;

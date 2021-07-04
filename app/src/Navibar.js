@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
-import { NavDropdown, Nav } from "react-bootstrap";
+import { NavDropdown, Nav, Form, FormControl } from "react-bootstrap";
 
 class Navibar extends React.Component {
   render() {
@@ -13,6 +13,14 @@ function RenderBarElement() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand>コーディング時間</Navbar.Brand>
+      <Button variant="secondary">graph</Button>
+      <Form inline>
+        <FormControl
+          type="text"
+          placeholder="account name"
+          className="mr-sm-2"
+        />
+      </Form>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
           <DropdownMenu />

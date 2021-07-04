@@ -28,7 +28,6 @@ class Navibar extends React.Component {
     return (
       <Navbar bg="light" expand="lg">
         <Navbar.Brand>コーディング時間</Navbar.Brand>
-        <Button variant="secondary">graph</Button>
         <Form inline>
           <FormControl
             type="text"
